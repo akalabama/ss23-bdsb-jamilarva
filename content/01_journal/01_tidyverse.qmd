@@ -67,5 +67,4 @@ sales_by_year_state_tbl %>%
 
 
 
-
 ```
