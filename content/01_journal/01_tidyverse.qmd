@@ -2,7 +2,9 @@
 title: "Tidyverse"
 author: "Jamila Rzayeva"
 ---
+
 ```{r plot, fig.width=10, fig.height=7}  
+
 # Load libraries
 library(tidyverse)
 library(readxl)
