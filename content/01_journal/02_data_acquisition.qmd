@@ -1,6 +1,6 @@
 ---
 title: "Data Acquisition"
-author: "Joschka Schwarz"
+author: "Jamila Rzayeva"
 ---
 
 ::: callout-note
