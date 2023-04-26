@@ -3,6 +3,4 @@ title: "Data Acquisition"
 author: "Jamila Rzayeva"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+
