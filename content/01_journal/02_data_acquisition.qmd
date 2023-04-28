@@ -3,7 +3,6 @@ title: "Data Acquisition"
 author: "Jamila Rzayeva"
 ---
 # Solution challenge 1
-
 ## Load libraries
 ```{r}
 #| echo: true
@@ -97,7 +96,6 @@ get_data <- function(url) {
   return(list("listings" = listings, "names" = names, "categories" = categories))
 }
 ```
-
 ## Create table from relevant data points
 ```{r}
 #| echo: true
