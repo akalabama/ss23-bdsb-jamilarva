@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.3.336">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Joschka Schwarz">
+<meta name="author" content="Jamila Rzayeva">
 
 <title>MyLabJournal - Data Acquisition</title>
 <style>
@@ -18,8 +18,42 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -63,6 +97,9 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
 
 </head>
 
@@ -77,51 +114,51 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">MyLabJournal</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Journal</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
         <li>
-    <a class="dropdown-item" href="../../content/01_journal/01_tidyverse.html">
+    <a class="dropdown-item" href="../../content/01_journal/01_tidyverse.html" rel="" target="">
  <span class="dropdown-text">01 Tidyverse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../content/01_journal/02_data_acquisition.html">
+    <a class="dropdown-item" href="../../content/01_journal/02_data_acquisition.html" rel="" target="">
  <span class="dropdown-text">02 Data Acquisition</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../content/01_journal/03_data_wrangling.html">
+    <a class="dropdown-item" href="../../content/01_journal/03_data_wrangling.html" rel="" target="">
  <span class="dropdown-text">03 Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../content/01_journal/04_data_visualization.html">
+    <a class="dropdown-item" href="../../content/01_journal/04_data_visualization.html" rel="" target="">
  <span class="dropdown-text">04 Data Visualization</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../content/02_notes/05_class_notes.html">
+    <a class="nav-link" href="../../content/02_notes/05_class_notes.html" rel="" target="">
  <span class="menu-text">Class notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../content/03_other/06_links.html">
+    <a class="nav-link" href="../../content/03_other/06_links.html" rel="" target="">
  <span class="menu-text">Links</span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools ms-auto">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -131,7 +168,28 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#solution-challenge-1" id="toc-solution-challenge-1" class="nav-link active" data-scroll-target="#solution-challenge-1"><span class="header-section-number">1</span> Solution challenge 1</a>
+  <ul class="collapse">
+  <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link" data-scroll-target="#load-libraries"><span class="header-section-number">1.1</span> Load libraries</a></li>
+  <li><a href="#set-api-key-i-have-to-hide-this" id="toc-set-api-key-i-have-to-hide-this" class="nav-link" data-scroll-target="#set-api-key-i-have-to-hide-this"><span class="header-section-number">1.2</span> Set API Key (I have to hide this)</a></li>
+  <li><a href="#get-weather-data-as-list-of-lists" id="toc-get-weather-data-as-list-of-lists" class="nav-link" data-scroll-target="#get-weather-data-as-list-of-lists"><span class="header-section-number">1.3</span> Get weather data (as list of lists)</a></li>
+  <li><a href="#create-table-from-relevant-data-points" id="toc-create-table-from-relevant-data-points" class="nav-link" data-scroll-target="#create-table-from-relevant-data-points"><span class="header-section-number">1.4</span> Create table from relevant data points</a></li>
+  <li><a href="#display-table" id="toc-display-table" class="nav-link" data-scroll-target="#display-table"><span class="header-section-number">1.5</span> Display table</a></li>
+  </ul></li>
+  <li><a href="#solution-challenge-2" id="toc-solution-challenge-2" class="nav-link" data-scroll-target="#solution-challenge-2"><span class="header-section-number">2</span> Solution challenge 2</a>
+  <ul class="collapse">
+  <li><a href="#load-libraries-1" id="toc-load-libraries-1" class="nav-link" data-scroll-target="#load-libraries-1"><span class="header-section-number">2.1</span> Load libraries</a></li>
+  <li><a href="#get-bike-category-links" id="toc-get-bike-category-links" class="nav-link" data-scroll-target="#get-bike-category-links"><span class="header-section-number">2.2</span> Get bike category links</a></li>
+  <li><a href="#define-function-to-scrape-relevant-data-points" id="toc-define-function-to-scrape-relevant-data-points" class="nav-link" data-scroll-target="#define-function-to-scrape-relevant-data-points"><span class="header-section-number">2.3</span> Define function to scrape relevant data points</a></li>
+  <li><a href="#create-table-from-relevant-data-points-1" id="toc-create-table-from-relevant-data-points-1" class="nav-link" data-scroll-target="#create-table-from-relevant-data-points-1"><span class="header-section-number">2.4</span> Create table from relevant data points</a></li>
+  <li><a href="#display-table-1" id="toc-display-table-1" class="nav-link" data-scroll-target="#display-table-1"><span class="header-section-number">2.5</span> Display table</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -148,7 +206,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Joschka Schwarz </p>
+             <p>Jamila Rzayeva </p>
           </div>
   </div>
     
@@ -159,21 +217,164 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="solution-challenge-1" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Solution challenge 1</h1>
+<section id="load-libraries" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="load-libraries"><span class="header-section-number">1.1</span> Load libraries</h2>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-1_dd9e3f8c0ecf216c78d2bb3b93f9d152">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(ROpenWeatherMap)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tibble)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-caption-container flex-fill">
-Note
+</section>
+<section id="set-api-key-i-have-to-hide-this" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="set-api-key-i-have-to-hide-this"><span class="header-section-number">1.2</span> Set API Key (I have to hide this)</h2>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-2_4ccb9a68f891ad6f1765955eec2c86d2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>API_KEY <span class="ot">=</span> <span class="st">"4168e37e031c475c3ac014612bfc9564"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="get-weather-data-as-list-of-lists" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="get-weather-data-as-list-of-lists"><span class="header-section-number">1.3</span> Get weather data (as list of lists)</h2>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-3_3c313edce77bcbbb3dbf733b65c7d41e">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>current_weather <span class="ot">&lt;-</span> <span class="fu">get_current_weather</span>(API_KEY, <span class="at">city =</span> <span class="st">"Hamburg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-table-from-relevant-data-points" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="create-table-from-relevant-data-points"><span class="header-section-number">1.4</span> Create table from relevant data points</h2>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-4_845c8bdc9c1ebb52a70fab65aa4f8049">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>weather_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">weather.type =</span> current_weather<span class="sc">$</span>weather<span class="sc">$</span>main,</span>
+<span id="cb4-2"><a href="#cb4-2"></a>                       <span class="at">weather.subtype =</span> current_weather<span class="sc">$</span>weather<span class="sc">$</span>description,</span>
+<span id="cb4-3"><a href="#cb4-3"></a>                       <span class="at">weather.temp =</span> current_weather<span class="sc">$</span>main<span class="sc">$</span>temp,</span>
+<span id="cb4-4"><a href="#cb4-4"></a>                       <span class="at">weather.feels_like =</span> current_weather<span class="sc">$</span>main<span class="sc">$</span>feels_like,</span>
+<span id="cb4-5"><a href="#cb4-5"></a>                       <span class="at">weather.temp_min =</span> current_weather<span class="sc">$</span>main<span class="sc">$</span>temp_min,</span>
+<span id="cb4-6"><a href="#cb4-6"></a>                       <span class="at">weather.temp_max =</span> current_weather<span class="sc">$</span>main<span class="sc">$</span>temp_max,</span>
+<span id="cb4-7"><a href="#cb4-7"></a>                       <span class="at">weather.pressure =</span> current_weather<span class="sc">$</span>main<span class="sc">$</span>pressure,</span>
+<span id="cb4-8"><a href="#cb4-8"></a>                       <span class="at">weather.humidity =</span> current_weather<span class="sc">$</span>main<span class="sc">$</span>humidity,</span>
+<span id="cb4-9"><a href="#cb4-9"></a>                       <span class="at">wind.speed =</span> current_weather<span class="sc">$</span>wind<span class="sc">$</span>speed,</span>
+<span id="cb4-10"><a href="#cb4-10"></a>                       <span class="at">wind.degree =</span> current_weather<span class="sc">$</span>wind<span class="sc">$</span>deg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="display-table" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="display-table"><span class="header-section-number">1.5</span> Display table</h2>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-5_5e4ad7cebc95fdf57bf16c2deb1ffe6e">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>weather_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["weather.type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["weather.subtype"],"name":[2],"type":["chr"],"align":["left"]},{"label":["weather.temp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["weather.feels_like"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["weather.temp_min"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["weather.temp_max"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["weather.pressure"],"name":[7],"type":["int"],"align":["right"]},{"label":["weather.humidity"],"name":[8],"type":["int"],"align":["right"]},{"label":["wind.speed"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["wind.degree"],"name":[10],"type":["int"],"align":["right"]}],"data":[{"1":"Rain","2":"moderate rain","3":"282.38","4":"280.4","5":"281.47","6":"283.31","7":"1011","8":"93","9":"3.6","10":"50"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>You can delete everything in here and start fresh.</p>
+</div>
+</section>
+</section>
+<section id="solution-challenge-2" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Solution challenge 2</h1>
+<section id="load-libraries-1" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="load-libraries-1"><span class="header-section-number">2.1</span> Load libraries</h2>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-6_bf162e064e773d42694f567677fc5472">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+#&gt; ✔ dplyr     1.1.2     ✔ purrr     1.0.1
+#&gt; ✔ forcats   1.0.0     ✔ readr     2.1.4
+#&gt; ✔ ggplot2   3.4.2     ✔ stringr   1.5.0
+#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#&gt; ✖ dplyr::filter() masks stats::filter()
+#&gt; ✖ dplyr::lag()    masks stats::lag()
+#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(glue)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">library</span>(rvest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; 
+#&gt; Attaching package: 'rvest'
+#&gt; 
+#&gt; The following object is masked from 'package:readr':
+#&gt; 
+#&gt;     guess_encoding</code></pre>
+</div>
+</div>
+</section>
+<section id="get-bike-category-links" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="get-bike-category-links"><span class="header-section-number">2.2</span> Get bike category links</h2>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-7_6748b7fdd0daeeec99db93cd15101a67">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>url_home <span class="ot">&lt;-</span> <span class="st">"https://www.rosebikes.de/fahrräder"</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>html_home <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url_home)</span>
+<span id="cb10-3"><a href="#cb10-3"></a>bike_cats <span class="ot">&lt;-</span> html_home <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">html_nodes</span>(<span class="at">css =</span> <span class="st">".catalog-navigation__link"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5"></a>links <span class="ot">&lt;-</span> <span class="fu">sapply</span>(bike_cats, <span class="cf">function</span>(x) {x <span class="sc">%&gt;%</span> <span class="fu">html_attr</span>(<span class="st">"href"</span>)})</span>
+<span id="cb10-6"><a href="#cb10-6"></a>links <span class="ot">&lt;-</span> links[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>] <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>  <span class="fu">enframe</span>(<span class="at">name =</span> <span class="st">"position"</span>, <span class="at">value =</span> <span class="st">"subdirectory"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-9"><a href="#cb10-9"></a>    <span class="at">url =</span> <span class="fu">glue</span>(<span class="st">"https://www.rosebikes.de{subdirectory}"</span>))  <span class="sc">%&gt;%</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>  <span class="fu">distinct</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="define-function-to-scrape-relevant-data-points" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="define-function-to-scrape-relevant-data-points"><span class="header-section-number">2.3</span> Define function to scrape relevant data points</h2>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-8_0123d9e3d9de680910118825f0ffec53">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>get_data <span class="ot">&lt;-</span> <span class="cf">function</span>(url) {</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  html_bike_cat <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
+<span id="cb11-3"><a href="#cb11-3"></a>  </span>
+<span id="cb11-4"><a href="#cb11-4"></a>  listings <span class="ot">&lt;-</span> <span class="fu">html_nodes</span>(html_bike_cat, <span class="at">css =</span> <span class="st">'.catalog-category-bikes__price-title'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-5"><a href="#cb11-5"></a>    <span class="fu">html_text</span>(<span class="at">trim=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span>              </span>
+<span id="cb11-6"><a href="#cb11-6"></a>    <span class="fu">str_replace_all</span>(<span class="st">" "</span>,<span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>    <span class="fu">str_replace_all</span>(<span class="st">"ab"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a>    <span class="fu">str_replace_all</span>(<span class="st">"€"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a>    <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a>    <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">."</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a>    <span class="fu">str_replace_all</span>(<span class="st">","</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">."</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a>    <span class="fu">iconv</span>(<span class="st">'utf-8'</span>, <span class="st">'ascii'</span>, <span class="at">sub=</span><span class="st">''</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-13"><a href="#cb11-13"></a>    <span class="fu">as.numeric</span>()</span>
+<span id="cb11-14"><a href="#cb11-14"></a>  </span>
+<span id="cb11-15"><a href="#cb11-15"></a>  names <span class="ot">&lt;-</span> <span class="fu">html_nodes</span>(html_bike_cat, <span class="at">xpath =</span> <span class="st">'//basic-headline/h4'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-16"><a href="#cb11-16"></a>    <span class="fu">html_text</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-17"><a href="#cb11-17"></a>    <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-18"><a href="#cb11-18"></a>    <span class="fu">str_to_title</span>()</span>
+<span id="cb11-19"><a href="#cb11-19"></a>  </span>
+<span id="cb11-20"><a href="#cb11-20"></a>  categories <span class="ot">&lt;-</span> <span class="fu">rep</span>(url <span class="sc">%&gt;%</span> <span class="fu">str_replace_all</span>(<span class="st">"https://www.rosebikes.de/fahrräder/"</span>, <span class="st">""</span>), </span>
+<span id="cb11-21"><a href="#cb11-21"></a>              <span class="at">each=</span><span class="fu">length</span>(names)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-22"><a href="#cb11-22"></a>    <span class="fu">str_to_title</span>()</span>
+<span id="cb11-23"><a href="#cb11-23"></a>  </span>
+<span id="cb11-24"><a href="#cb11-24"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="st">"listings"</span> <span class="ot">=</span> listings, <span class="st">"names"</span> <span class="ot">=</span> names, <span class="st">"categories"</span> <span class="ot">=</span> categories))</span>
+<span id="cb11-25"><a href="#cb11-25"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-table-from-relevant-data-points-1" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="create-table-from-relevant-data-points-1"><span class="header-section-number">2.4</span> Create table from relevant data points</h2>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-9_6053a4c8936da1c4528ba4ffe113430d">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_data</span>(links<span class="sc">$</span>url[<span class="dv">1</span>])</span>
+<span id="cb12-2"><a href="#cb12-2"></a>bike_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">bike.type =</span> data<span class="sc">$</span>categories,</span>
+<span id="cb12-3"><a href="#cb12-3"></a>                    <span class="at">bike.name =</span> data<span class="sc">$</span>names,</span>
+<span id="cb12-4"><a href="#cb12-4"></a>                    <span class="at">bike.price =</span> <span class="fu">as.numeric</span>(data<span class="sc">$</span>listings))</span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>) {</span>
+<span id="cb12-6"><a href="#cb12-6"></a>  data <span class="ot">&lt;-</span> <span class="fu">get_data</span>(links<span class="sc">$</span>url[i])</span>
+<span id="cb12-7"><a href="#cb12-7"></a>  </span>
+<span id="cb12-8"><a href="#cb12-8"></a>  bike_data <span class="ot">&lt;-</span> bike_data <span class="sc">%&gt;%</span> <span class="fu">add_row</span>(<span class="at">bike.type =</span> data<span class="sc">$</span>categories,</span>
+<span id="cb12-9"><a href="#cb12-9"></a>                                     <span class="at">bike.name =</span> data<span class="sc">$</span>names,</span>
+<span id="cb12-10"><a href="#cb12-10"></a>                                     <span class="at">bike.price =</span> <span class="fu">as.numeric</span>(data<span class="sc">$</span>listings))</span>
+<span id="cb12-11"><a href="#cb12-11"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="display-table-1" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="display-table-1"><span class="header-section-number">2.5</span> Display table</h2>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-10_197cb9e34e5468c5dbe3b771c38703c1">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">head</span>(bike_data, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["bike.type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["bike.name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["bike.price"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Mtb","2":"Count Solo","3":"749"},{"1":"Mtb","2":"Psycho Path","3":"1499"},{"1":"Mtb","2":"Thrill Hill","3":"2999"},{"1":"Mtb","2":"Root Miller Plus","3":"4999"},{"1":"Mtb","2":"Ground Control","3":"1999"},{"1":"Mtb","2":"Root Miller","3":"2299"},{"1":"Mtb","2":"Bonero","3":"1499"},{"1":"Mtb","2":"Soul Fire","3":"1999"},{"1":"Mtb","2":"The Bruce","3":"899"},{"1":"Rennrad","2":"Xlite","3":"2999"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -318,9 +519,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -385,6 +600,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
