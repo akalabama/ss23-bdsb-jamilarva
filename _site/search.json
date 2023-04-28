@@ -11,7 +11,7 @@
     "href": "content/01_journal/03_data_wrangling.html",
     "title": "Data Wrangling",
     "section": "",
-    "text": "Note\n\n\n\nYou can delete everything in here and start fresh."
+    "text": "library(tidyverse)\n\n#&gt; ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4\n#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.0\n#&gt; ✔ ggplot2   3.4.2     ✔ tibble    3.2.1\n#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n#&gt; ✔ purrr     1.0.1     \n#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n#&gt; ✖ dplyr::filter() masks stats::filter()\n#&gt; ✖ dplyr::lag()    masks stats::lag()\n#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(vroom)\nlibrary(data.table)\n\n#&gt; \n#&gt; Attaching package: 'data.table'\n#&gt; \n#&gt; The following objects are masked from 'package:lubridate':\n#&gt; \n#&gt;     hour, isoweek, mday, minute, month, quarter, second, wday, week,\n#&gt;     yday, year\n#&gt; \n#&gt; The following objects are masked from 'package:dplyr':\n#&gt; \n#&gt;     between, first, last\n#&gt; \n#&gt; The following object is masked from 'package:purrr':\n#&gt; \n#&gt;     transpose\n\n\n\n\n\n\ncol_types &lt;- list(\n  id = col_character(),\n  type = col_character(),\n  number = col_character(),\n  country = col_character(),\n  date = col_date(\"%Y-%m-%d\"),\n  abstract = col_character(),\n  title = col_character(),\n  kind = col_character(),\n  num_claims = col_double(),\n  filename = col_character(),\n  withdrawn = col_double()\n)\n\n\n\n\n\npatent_tb1 &lt;- vroom(\n  file       = '../../Patent_data_reduced/patent.tsv', \n  delim      = \"\\t\", \n  col_types  = col_types,\n  na         = c(\"\", \"NA\", \"NULL\")\n)\n\n#&gt; Warning: The following named parsers don't match the column names: type,\n#&gt; number, country, abstract, title, kind, filename, withdrawn\n\nassignee_tb1 &lt;- vroom(\n  file       = '../../Patent_data_reduced/assignee.tsv', \n  delim      = \"\\t\", \n  col_types  = col_types,\n  na         = c(\"\", \"NA\", \"NULL\")\n)\n\n#&gt; Warning: The following named parsers don't match the column names: number,\n#&gt; country, date, abstract, title, kind, num_claims, filename, withdrawn\n\npatent_assignee_tb1 &lt;- vroom(\n  file       = '../../Patent_data_reduced/patent_assignee.tsv', \n  delim      = \"\\t\", \n  col_types  = col_types,\n  na         = c(\"\", \"NA\", \"NULL\"))\n\n#&gt; Warning: The following named parsers don't match the column names: id, type,\n#&gt; number, country, date, abstract, title, kind, num_claims, filename, withdrawn\n\nuspc_tb1 &lt;- vroom(\n  file       = '../../Patent_data_reduced/uspc.tsv', \n  delim      = \"\\t\", \n  col_types  = col_types,\n  na         = c(\"\", \"NA\", \"NULL\")) %&gt;%\n  transform(patent_id = as.character(patent_id))\n\n#&gt; Warning: The following named parsers don't match the column names: id, type,\n#&gt; number, country, date, abstract, title, kind, num_claims, filename, withdrawn\n\n\n\n\n\n\nwrangled &lt;- assignee_tb1 %&gt;%\n  left_join(patent_assignee_tb1, by = c(\"id\" = \"assignee_id\")) %&gt;%\n  left_join(patent_tb1, by = c(\"patent_id\" = \"id\")) %&gt;%\n  left_join(uspc_tb1, by = \"patent_id\")\n\n#&gt; Warning in left_join(., uspc_tb1, by = \"patent_id\"): Detected an unexpected many-to-many relationship between `x` and `y`.\n#&gt; ℹ Row 1 of `x` matches multiple rows in `y`.\n#&gt; ℹ Row 376875 of `y` matches multiple rows in `x`.\n#&gt; ℹ If a many-to-many relationship is expected, set `relationship =\n#&gt;   \"many-to-many\"` to silence this warning."
   },
   {
     "objectID": "content/01_journal/04_data_visualization.html",
@@ -39,7 +39,7 @@
     "href": "content/01_journal/02_data_acquisition.html",
     "title": "Data Acquisition",
     "section": "",
-    "text": "Note\n\n\n\nYou can delete everything in here and start fresh."
+    "text": "library(ROpenWeatherMap)\nlibrary(tibble)\n\n\n\n\n\nAPI_KEY = \"4168e37e031c475c3ac014612bfc9564\"\n\n\n\n\n\ncurrent_weather &lt;- get_current_weather(API_KEY, city = \"Hamburg\")\n\n\n\n\n\nweather_data &lt;- tibble(weather.type = current_weather$weather$main,\n                       weather.subtype = current_weather$weather$description,\n                       weather.temp = current_weather$main$temp,\n                       weather.feels_like = current_weather$main$feels_like,\n                       weather.temp_min = current_weather$main$temp_min,\n                       weather.temp_max = current_weather$main$temp_max,\n                       weather.pressure = current_weather$main$pressure,\n                       weather.humidity = current_weather$main$humidity,\n                       wind.speed = current_weather$wind$speed,\n                       wind.degree = current_weather$wind$deg)\n\n\n\n\n\nweather_data"
   },
   {
     "objectID": "content/02_notes/05_class_notes.html",
@@ -61,5 +61,159 @@
     "title": "My Lab Journal",
     "section": "How to use",
     "text": "How to use\n\nAccept the assignment and get your own github repo.\nBlog/journal what you are doing in R, by editing the .qmd files.\nSee the links page for lots of helpful links on learning R.\nChange everything to make it your own.\nMake sure to render you website everytime before you want to upload changes"
+  },
+  {
+    "objectID": "content/01_journal/02_data_acquisition.html#load-libraries",
+    "href": "content/01_journal/02_data_acquisition.html#load-libraries",
+    "title": "Data Acquisition",
+    "section": "",
+    "text": "library(ROpenWeatherMap)\nlibrary(tibble)"
+  },
+  {
+    "objectID": "content/01_journal/02_data_acquisition.html#set-api-key-i-have-to-hide-this",
+    "href": "content/01_journal/02_data_acquisition.html#set-api-key-i-have-to-hide-this",
+    "title": "Data Acquisition",
+    "section": "",
+    "text": "API_KEY = \"4168e37e031c475c3ac014612bfc9564\""
+  },
+  {
+    "objectID": "content/01_journal/02_data_acquisition.html#get-weather-data-as-list-of-lists",
+    "href": "content/01_journal/02_data_acquisition.html#get-weather-data-as-list-of-lists",
+    "title": "Data Acquisition",
+    "section": "",
+    "text": "current_weather &lt;- get_current_weather(API_KEY, city = \"Hamburg\")"
+  },
+  {
+    "objectID": "content/01_journal/02_data_acquisition.html#create-table-from-relevant-data-points",
+    "href": "content/01_journal/02_data_acquisition.html#create-table-from-relevant-data-points",
+    "title": "Data Acquisition",
+    "section": "",
+    "text": "weather_data &lt;- tibble(weather.type = current_weather$weather$main,\n                       weather.subtype = current_weather$weather$description,\n                       weather.temp = current_weather$main$temp,\n                       weather.feels_like = current_weather$main$feels_like,\n                       weather.temp_min = current_weather$main$temp_min,\n                       weather.temp_max = current_weather$main$temp_max,\n                       weather.pressure = current_weather$main$pressure,\n                       weather.humidity = current_weather$main$humidity,\n                       wind.speed = current_weather$wind$speed,\n                       wind.degree = current_weather$wind$deg)"
+  },
+  {
+    "objectID": "content/01_journal/02_data_acquisition.html#display-table",
+    "href": "content/01_journal/02_data_acquisition.html#display-table",
+    "title": "Data Acquisition",
+    "section": "",
+    "text": "weather_data"
+  },
+  {
+    "objectID": "content/01_journal/02_data_acquisition.html#load-libraries-1",
+    "href": "content/01_journal/02_data_acquisition.html#load-libraries-1",
+    "title": "Data Acquisition",
+    "section": "2.1 Load libraries",
+    "text": "2.1 Load libraries\n\nlibrary(tidyverse)\n\n#&gt; ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n#&gt; ✔ dplyr     1.1.2     ✔ purrr     1.0.1\n#&gt; ✔ forcats   1.0.0     ✔ readr     2.1.4\n#&gt; ✔ ggplot2   3.4.2     ✔ stringr   1.5.0\n#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n#&gt; ✖ dplyr::filter() masks stats::filter()\n#&gt; ✖ dplyr::lag()    masks stats::lag()\n#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(glue)\nlibrary(rvest)\n\n#&gt; \n#&gt; Attaching package: 'rvest'\n#&gt; \n#&gt; The following object is masked from 'package:readr':\n#&gt; \n#&gt;     guess_encoding"
+  },
+  {
+    "objectID": "content/01_journal/02_data_acquisition.html#get-bike-category-links",
+    "href": "content/01_journal/02_data_acquisition.html#get-bike-category-links",
+    "title": "Data Acquisition",
+    "section": "2.2 Get bike category links",
+    "text": "2.2 Get bike category links\n\nurl_home &lt;- \"https://www.rosebikes.de/fahrräder\"\nhtml_home &lt;- read_html(url_home)\nbike_cats &lt;- html_home %&gt;%\n  html_nodes(css = \".catalog-navigation__link\")\nlinks &lt;- sapply(bike_cats, function(x) {x %&gt;% html_attr(\"href\")})\nlinks &lt;- links[1:9] %&gt;%\n  enframe(name = \"position\", value = \"subdirectory\") %&gt;%\n  mutate(\n    url = glue(\"https://www.rosebikes.de{subdirectory}\"))  %&gt;%\n  distinct(url)"
+  },
+  {
+    "objectID": "content/01_journal/02_data_acquisition.html#define-function-to-scrape-relevant-data-points",
+    "href": "content/01_journal/02_data_acquisition.html#define-function-to-scrape-relevant-data-points",
+    "title": "Data Acquisition",
+    "section": "2.3 Define function to scrape relevant data points",
+    "text": "2.3 Define function to scrape relevant data points\n\nget_data &lt;- function(url) {\n  html_bike_cat &lt;- read_html(url)\n  \n  listings &lt;- html_nodes(html_bike_cat, css = '.catalog-category-bikes__price-title') %&gt;% \n    html_text(trim=TRUE) %&gt;%              \n    str_replace_all(\" \",\"\") %&gt;%\n    str_replace_all(\"ab\", \"\") %&gt;%\n    str_replace_all(\"€\", \"\") %&gt;%\n    str_replace_all(\"\\n\", \"\") %&gt;%\n    str_replace_all(\"\\\\.\", \"\") %&gt;%\n    str_replace_all(\",\", \"\\\\.\") %&gt;%\n    iconv('utf-8', 'ascii', sub='') %&gt;%\n    as.numeric()\n  \n  names &lt;- html_nodes(html_bike_cat, xpath = '//basic-headline/h4') %&gt;% \n    html_text() %&gt;%\n    str_replace_all(\"\\n\", \"\") %&gt;%\n    str_to_title()\n  \n  categories &lt;- rep(url %&gt;% str_replace_all(\"https://www.rosebikes.de/fahrräder/\", \"\"), \n              each=length(names)) %&gt;%\n    str_to_title()\n  \n  return(list(\"listings\" = listings, \"names\" = names, \"categories\" = categories))\n}"
+  },
+  {
+    "objectID": "content/01_journal/02_data_acquisition.html#create-table-from-relevant-data-points-1",
+    "href": "content/01_journal/02_data_acquisition.html#create-table-from-relevant-data-points-1",
+    "title": "Data Acquisition",
+    "section": "2.4 Create table from relevant data points",
+    "text": "2.4 Create table from relevant data points\n\ndata &lt;- get_data(links$url[1])\nbike_data &lt;- tibble(bike.type = data$categories,\n                    bike.name = data$names,\n                    bike.price = as.numeric(data$listings))\nfor (i in 2:9) {\n  data &lt;- get_data(links$url[i])\n  \n  bike_data &lt;- bike_data %&gt;% add_row(bike.type = data$categories,\n                                     bike.name = data$names,\n                                     bike.price = as.numeric(data$listings))\n}"
+  },
+  {
+    "objectID": "content/01_journal/02_data_acquisition.html#display-table-1",
+    "href": "content/01_journal/02_data_acquisition.html#display-table-1",
+    "title": "Data Acquisition",
+    "section": "2.5 Display table",
+    "text": "2.5 Display table\n\nhead(bike_data, 10)"
+  },
+  {
+    "objectID": "content/01_journal/03_data_wrangling.html#load-libraries",
+    "href": "content/01_journal/03_data_wrangling.html#load-libraries",
+    "title": "Data Wrangling",
+    "section": "",
+    "text": "library(tidyverse)\n\n#&gt; ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4\n#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.0\n#&gt; ✔ ggplot2   3.4.2     ✔ tibble    3.2.1\n#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n#&gt; ✔ purrr     1.0.1     \n#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n#&gt; ✖ dplyr::filter() masks stats::filter()\n#&gt; ✖ dplyr::lag()    masks stats::lag()\n#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(vroom)\nlibrary(data.table)\n\n#&gt; \n#&gt; Attaching package: 'data.table'\n#&gt; \n#&gt; The following objects are masked from 'package:lubridate':\n#&gt; \n#&gt;     hour, isoweek, mday, minute, month, quarter, second, wday, week,\n#&gt;     yday, year\n#&gt; \n#&gt; The following objects are masked from 'package:dplyr':\n#&gt; \n#&gt;     between, first, last\n#&gt; \n#&gt; The following object is masked from 'package:purrr':\n#&gt; \n#&gt;     transpose"
+  },
+  {
+    "objectID": "content/01_journal/03_data_wrangling.html#set-column-types",
+    "href": "content/01_journal/03_data_wrangling.html#set-column-types",
+    "title": "Data Wrangling",
+    "section": "",
+    "text": "col_types &lt;- list(\n  id = col_character(),\n  type = col_character(),\n  number = col_character(),\n  country = col_character(),\n  date = col_date(\"%Y-%m-%d\"),\n  abstract = col_character(),\n  title = col_character(),\n  kind = col_character(),\n  num_claims = col_double(),\n  filename = col_character(),\n  withdrawn = col_double()\n)"
+  },
+  {
+    "objectID": "content/01_journal/03_data_wrangling.html#load-tables",
+    "href": "content/01_journal/03_data_wrangling.html#load-tables",
+    "title": "Data Wrangling",
+    "section": "",
+    "text": "patent_tb1 &lt;- vroom(\n  file       = '../../Patent_data_reduced/patent.tsv', \n  delim      = \"\\t\", \n  col_types  = col_types,\n  na         = c(\"\", \"NA\", \"NULL\")\n)\n\n#&gt; Warning: The following named parsers don't match the column names: type,\n#&gt; number, country, abstract, title, kind, filename, withdrawn\n\nassignee_tb1 &lt;- vroom(\n  file       = '../../Patent_data_reduced/assignee.tsv', \n  delim      = \"\\t\", \n  col_types  = col_types,\n  na         = c(\"\", \"NA\", \"NULL\")\n)\n\n#&gt; Warning: The following named parsers don't match the column names: number,\n#&gt; country, date, abstract, title, kind, num_claims, filename, withdrawn\n\npatent_assignee_tb1 &lt;- vroom(\n  file       = '../../Patent_data_reduced/patent_assignee.tsv', \n  delim      = \"\\t\", \n  col_types  = col_types,\n  na         = c(\"\", \"NA\", \"NULL\"))\n\n#&gt; Warning: The following named parsers don't match the column names: id, type,\n#&gt; number, country, date, abstract, title, kind, num_claims, filename, withdrawn\n\nuspc_tb1 &lt;- vroom(\n  file       = '../../Patent_data_reduced/uspc.tsv', \n  delim      = \"\\t\", \n  col_types  = col_types,\n  na         = c(\"\", \"NA\", \"NULL\")) %&gt;%\n  transform(patent_id = as.character(patent_id))\n\n#&gt; Warning: The following named parsers don't match the column names: id, type,\n#&gt; number, country, date, abstract, title, kind, num_claims, filename, withdrawn"
+  },
+  {
+    "objectID": "content/01_journal/03_data_wrangling.html#wrangle-tables",
+    "href": "content/01_journal/03_data_wrangling.html#wrangle-tables",
+    "title": "Data Wrangling",
+    "section": "",
+    "text": "wrangled &lt;- assignee_tb1 %&gt;%\n  left_join(patent_assignee_tb1, by = c(\"id\" = \"assignee_id\")) %&gt;%\n  left_join(patent_tb1, by = c(\"patent_id\" = \"id\")) %&gt;%\n  left_join(uspc_tb1, by = \"patent_id\")\n\n#&gt; Warning in left_join(., uspc_tb1, by = \"patent_id\"): Detected an unexpected many-to-many relationship between `x` and `y`.\n#&gt; ℹ Row 1 of `x` matches multiple rows in `y`.\n#&gt; ℹ Row 376875 of `y` matches multiple rows in `x`.\n#&gt; ℹ If a many-to-many relationship is expected, set `relationship =\n#&gt;   \"many-to-many\"` to silence this warning."
+  },
+  {
+    "objectID": "content/01_journal/03_data_wrangling.html#get-patent-leaders",
+    "href": "content/01_journal/03_data_wrangling.html#get-patent-leaders",
+    "title": "Data Wrangling",
+    "section": "2.1 Get patent leaders",
+    "text": "2.1 Get patent leaders\n\npatent_leaders &lt;- sort(table(wrangled$organization), decreasing=T)[1:10] %&gt;%\n  as.data.frame() %&gt;%\n  mutate(Var1 = Var1 %&gt;% str_to_title())"
+  },
+  {
+    "objectID": "content/01_journal/03_data_wrangling.html#display-patent-leaders-in-table",
+    "href": "content/01_journal/03_data_wrangling.html#display-patent-leaders-in-table",
+    "title": "Data Wrangling",
+    "section": "2.2 Display patent leaders in table",
+    "text": "2.2 Display patent leaders in table\n\ndata.table(\n  \"Organization\" = patent_leaders$Var1,\n  \"No. of patents (2014)\" = patent_leaders$Freq)"
+  },
+  {
+    "objectID": "content/01_journal/03_data_wrangling.html#get-august-wrangled-table",
+    "href": "content/01_journal/03_data_wrangling.html#get-august-wrangled-table",
+    "title": "Data Wrangling",
+    "section": "3.1 Get August wrangled table",
+    "text": "3.1 Get August wrangled table\n\nwrangled_august &lt;- wrangled %&gt;% \n  select(organization, date) %&gt;%\n  filter(date &gt;= \"2014-08-01\" & date &lt;= \"2014-08-31\")"
+  },
+  {
+    "objectID": "content/01_journal/03_data_wrangling.html#get-august-patent-leaders",
+    "href": "content/01_journal/03_data_wrangling.html#get-august-patent-leaders",
+    "title": "Data Wrangling",
+    "section": "3.2 Get August patent leaders",
+    "text": "3.2 Get August patent leaders\n\npatent_leaders_august &lt;- sort(table(wrangled_august$organization), decreasing=T)[1:10] %&gt;%\n  as.data.frame() %&gt;%\n  mutate(Var1 = Var1 %&gt;% str_to_title())"
+  },
+  {
+    "objectID": "content/01_journal/03_data_wrangling.html#display-august-patent-leaders-in-table",
+    "href": "content/01_journal/03_data_wrangling.html#display-august-patent-leaders-in-table",
+    "title": "Data Wrangling",
+    "section": "3.3 Display August patent leaders in table",
+    "text": "3.3 Display August patent leaders in table\n\ndata.table(\n  \"Organization\" = patent_leaders_august$Var1,\n  \"No. of patents (August 2014)\" = patent_leaders_august$Freq)"
+  },
+  {
+    "objectID": "content/01_journal/03_data_wrangling.html#get-class-wrangled-table",
+    "href": "content/01_journal/03_data_wrangling.html#get-class-wrangled-table",
+    "title": "Data Wrangling",
+    "section": "4.1 Get class wrangled table",
+    "text": "4.1 Get class wrangled table\n\nwrangled_class &lt;- wrangled %&gt;%\n  select(organization, mainclass_id) %&gt;%\n  filter(organization %in% patent_leaders$Var1[1:10]) %&gt;% \n  subset(mainclass_id != \"No longer published\")"
+  },
+  {
+    "objectID": "content/01_journal/03_data_wrangling.html#get-class-patent-leaders",
+    "href": "content/01_journal/03_data_wrangling.html#get-class-patent-leaders",
+    "title": "Data Wrangling",
+    "section": "4.2 Get class patent leaders",
+    "text": "4.2 Get class patent leaders\n\nclass_leaders &lt;- sort(table(wrangled_class$mainclass_id), decreasing=T)[1:5] %&gt;% \n  as.data.frame() %&gt;%\n  mutate(Var1 = Var1 %&gt;% str_to_title())"
+  },
+  {
+    "objectID": "content/01_journal/03_data_wrangling.html#display-class-patent-leaders-in-table",
+    "href": "content/01_journal/03_data_wrangling.html#display-class-patent-leaders-in-table",
+    "title": "Data Wrangling",
+    "section": "4.3 Display class patent leaders in table",
+    "text": "4.3 Display class patent leaders in table\n\ndata.table(\n  \"USPTO tech main class (id since can't find name) for top 10 companies (US since can't find worldwide)\" = class_leaders$Var1,\n  \"No. of patents (2014)\" = class_leaders$Freq)"
   }
 ]

@@ -2,7 +2,7 @@
 title: "Data Wrangling"
 author: "Jamila Rzaayeva"
 ---
-# Solution
+# Solution a la Jamila Rzayeva
 
 ## Load libraries
 ```{r}
