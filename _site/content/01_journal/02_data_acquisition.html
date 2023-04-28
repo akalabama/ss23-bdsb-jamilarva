@@ -174,15 +174,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#solution-challenge-1" id="toc-solution-challenge-1" class="nav-link active" data-scroll-target="#solution-challenge-1"><span class="header-section-number">1</span> Solution challenge 1</a>
   <ul class="collapse">
-  <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link" data-scroll-target="#load-libraries"><span class="header-section-number">1.1</span> Load libraries</a></li>
-  <li><a href="#set-api-key-i-have-to-hide-this" id="toc-set-api-key-i-have-to-hide-this" class="nav-link" data-scroll-target="#set-api-key-i-have-to-hide-this"><span class="header-section-number">1.2</span> Set API Key (I have to hide this)</a></li>
-  <li><a href="#get-weather-data-as-list-of-lists" id="toc-get-weather-data-as-list-of-lists" class="nav-link" data-scroll-target="#get-weather-data-as-list-of-lists"><span class="header-section-number">1.3</span> Get weather data (as list of lists)</a></li>
-  <li><a href="#create-table-from-relevant-data-points" id="toc-create-table-from-relevant-data-points" class="nav-link" data-scroll-target="#create-table-from-relevant-data-points"><span class="header-section-number">1.4</span> Create table from relevant data points</a></li>
-  <li><a href="#display-table" id="toc-display-table" class="nav-link" data-scroll-target="#display-table"><span class="header-section-number">1.5</span> Display table</a></li>
+  <li><a href="#set-api-key-i-have-to-hide-this" id="toc-set-api-key-i-have-to-hide-this" class="nav-link" data-scroll-target="#set-api-key-i-have-to-hide-this"><span class="header-section-number">1.1</span> Set API Key (I have to hide this)</a></li>
+  <li><a href="#get-weather-data-as-list-of-lists" id="toc-get-weather-data-as-list-of-lists" class="nav-link" data-scroll-target="#get-weather-data-as-list-of-lists"><span class="header-section-number">1.2</span> Get weather data (as list of lists)</a></li>
+  <li><a href="#create-table-from-relevant-data-points" id="toc-create-table-from-relevant-data-points" class="nav-link" data-scroll-target="#create-table-from-relevant-data-points"><span class="header-section-number">1.3</span> Create table from relevant data points</a></li>
+  <li><a href="#display-table" id="toc-display-table" class="nav-link" data-scroll-target="#display-table"><span class="header-section-number">1.4</span> Display table</a></li>
   </ul></li>
   <li><a href="#solution-challenge-2" id="toc-solution-challenge-2" class="nav-link" data-scroll-target="#solution-challenge-2"><span class="header-section-number">2</span> Solution challenge 2</a>
   <ul class="collapse">
-  <li><a href="#load-libraries-1" id="toc-load-libraries-1" class="nav-link" data-scroll-target="#load-libraries-1"><span class="header-section-number">2.1</span> Load libraries</a></li>
+  <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link" data-scroll-target="#load-libraries"><span class="header-section-number">2.1</span> Load libraries</a></li>
   <li><a href="#get-bike-category-links" id="toc-get-bike-category-links" class="nav-link" data-scroll-target="#get-bike-category-links"><span class="header-section-number">2.2</span> Get bike category links</a></li>
   <li><a href="#define-function-to-scrape-relevant-data-points" id="toc-define-function-to-scrape-relevant-data-points" class="nav-link" data-scroll-target="#define-function-to-scrape-relevant-data-points"><span class="header-section-number">2.3</span> Define function to scrape relevant data points</a></li>
   <li><a href="#create-table-from-relevant-data-points-1" id="toc-create-table-from-relevant-data-points-1" class="nav-link" data-scroll-target="#create-table-from-relevant-data-points-1"><span class="header-section-number">2.4</span> Create table from relevant data points</a></li>
@@ -219,27 +218,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="solution-challenge-1" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Solution challenge 1</h1>
-<section id="load-libraries" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="load-libraries"><span class="header-section-number">1.1</span> Load libraries</h2>
+<p>&lt;3 &lt;3 &lt;3 ## Load libraries</p>
 <div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-1_dd9e3f8c0ecf216c78d2bb3b93f9d152">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(ROpenWeatherMap)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tibble)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="set-api-key-i-have-to-hide-this" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="set-api-key-i-have-to-hide-this"><span class="header-section-number">1.2</span> Set API Key (I have to hide this)</h2>
+<section id="set-api-key-i-have-to-hide-this" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="set-api-key-i-have-to-hide-this"><span class="header-section-number">1.1</span> Set API Key (I have to hide this)</h2>
 <div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-2_4ccb9a68f891ad6f1765955eec2c86d2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>API_KEY <span class="ot">=</span> <span class="st">"4168e37e031c475c3ac014612bfc9564"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="get-weather-data-as-list-of-lists" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="get-weather-data-as-list-of-lists"><span class="header-section-number">1.3</span> Get weather data (as list of lists)</h2>
+<section id="get-weather-data-as-list-of-lists" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="get-weather-data-as-list-of-lists"><span class="header-section-number">1.2</span> Get weather data (as list of lists)</h2>
 <div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-3_3c313edce77bcbbb3dbf733b65c7d41e">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>current_weather <span class="ot">&lt;-</span> <span class="fu">get_current_weather</span>(API_KEY, <span class="at">city =</span> <span class="st">"Hamburg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="create-table-from-relevant-data-points" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="create-table-from-relevant-data-points"><span class="header-section-number">1.4</span> Create table from relevant data points</h2>
+<section id="create-table-from-relevant-data-points" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="create-table-from-relevant-data-points"><span class="header-section-number">1.3</span> Create table from relevant data points</h2>
 <div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-4_845c8bdc9c1ebb52a70fab65aa4f8049">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>weather_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">weather.type =</span> current_weather<span class="sc">$</span>weather<span class="sc">$</span>main,</span>
 <span id="cb4-2"><a href="#cb4-2"></a>                       <span class="at">weather.subtype =</span> current_weather<span class="sc">$</span>weather<span class="sc">$</span>description,</span>
@@ -253,8 +250,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-10"><a href="#cb4-10"></a>                       <span class="at">wind.degree =</span> current_weather<span class="sc">$</span>wind<span class="sc">$</span>deg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="display-table" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="display-table"><span class="header-section-number">1.5</span> Display table</h2>
+<section id="display-table" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="display-table"><span class="header-section-number">1.4</span> Display table</h2>
 <div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-5_5e4ad7cebc95fdf57bf16c2deb1ffe6e">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>weather_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -270,8 +267,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="solution-challenge-2" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Solution challenge 2</h1>
-<section id="load-libraries-1" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="load-libraries-1"><span class="header-section-number">2.1</span> Load libraries</h2>
+<section id="load-libraries" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="load-libraries"><span class="header-section-number">2.1</span> Load libraries</h2>
 <div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-6_bf162e064e773d42694f567677fc5472">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
